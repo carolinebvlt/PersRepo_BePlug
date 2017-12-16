@@ -52,10 +52,6 @@ sessionSockets.on('connection', function (err, socket, session) {
     socket.broadcast.emit('userON', pseudo);
   });
 
-  socket.on('msg', function(msg){
-    socket.broadcast.emit('msg', {exp:session.pseudo, content:msg});
-  });
-
   socket.on('disconnect', function() {
     /*--------------A DESACTIVER QUAND ON UTILISE NODEMON-------------*/
     // var content = fs.readFileSync('db/usersON.json');
@@ -70,17 +66,15 @@ sessionSockets.on('connection', function (err, socket, session) {
     socket.broadcast.emit('userOFF', session.pseudo);
   });
 
+  socket.on('msg', function(msg){
+    socket.broadcast.emit('msg', {exp:session.pseudo, content:msg});
+  });
+
   socket.on('room', function(room){
-    console.log('going to join the room : '+room);
     socket.join(room);
-    console.log('joined');
     socket.broadcast.to(room).emit('msgTest', 'this is a test message');
-    // one ne voit pa sle message lié a sa propre connection mais celle des autres oui
+    /*one ne voit pa sle message lié a sa propre connection mais celle des autres oui*/
   });
 });
-
-// var room = "testRoom";
-// io.sockets.in(room).emit('msgTest', 'this is a test message');
-
 
 server.listen(8080);
