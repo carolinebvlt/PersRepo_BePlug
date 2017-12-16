@@ -33,6 +33,17 @@ sessionSockets.on('connection', function (err, socket, session) {
     session.pseudo = pseudo;
     session.save();
     socket.emit('session', session);
+    /*--------------A DESACTIVER QUAND ON UTILISE NODEMON-------------*/
+    var content = fs.readFileSync('db/usersON.json');
+    var data = JSON.parse(content);
+    var newI = data.length;
+    data[newI] = pseudo;
+    data = JSON.stringify(data, null, 2);
+    fs.writeFile('db/usersON.json', data , finished);
+    function finished(err){
+      console.log('done!');
+    };
+    /*----------------------------------------------------------------*/
     socket.broadcast.emit('userON', pseudo);
   });
 
@@ -44,17 +55,5 @@ sessionSockets.on('connection', function (err, socket, session) {
     socket.broadcast.emit('userOFF', session.pseudo);
   });
 });
-
-
-//     var content = fs.readFileSync('db/usersON.json');
-//     var data = JSON.parse(content);
-//     var newI = data.length;
-//     data[newI] = pseudo;
-//     data = JSON.stringify(data, null, 2);
-//     fs.writeFile('db/usersON.json', data , finished);
-//     function finished(err){
-//       console.log('done!');
-//     };
-
 
 server.listen(8080);
