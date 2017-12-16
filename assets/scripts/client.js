@@ -24,9 +24,19 @@ socket.on('userOFF', function(pseudo){
 socket.on('listUsersON', function(list){
   insertListUsersON(list);
 });
-// socket.on('session', function(session){
-//   console.log('logSessionPseudo = '+ session.pseudo);
-// }) OK
+
+
+var room = "testRoom";
+socket.on('connect', function(){
+  // console.log('connected'); ok
+  socket.emit('room', room);
+  console.log('room emitted to server : '+room);
+})
+socket.on('msgTest', function(msg){
+  console.log('roomSomewhere!');
+  console.log('RoomMessage : '+msg);
+})
+
 
 /*--------------------------  FUNCTIONS  ---------------------------------*/
 
