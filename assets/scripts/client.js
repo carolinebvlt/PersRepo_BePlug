@@ -13,11 +13,18 @@ document.getElementById('submitMsg').addEventListener('click', function(event){
 
 socket.on('msg', function(msg){
   insertMsg('chatZone', msg);
-})
+});
 
 socket.on('userON', function(pseudo){
   ONlog(pseudo);
-})
+});
+socket.on('userOFF', function(pseudo){
+  OFFlog(pseudo);
+});
+
+// socket.on('session', function(session){
+//   console.log('logSessionPseudo = '+ session.pseudo);
+// }) OK
 
 /*--------------------------  FUNCTIONS  ---------------------------------*/
 
@@ -37,5 +44,11 @@ function ONlog(pseudo){
   var parent = document.getElementById('chatZone');
   var p = document.createElement('p');
   p.innerHTML = "<i>"+pseudo+" is online </i>";
+  parent.append(p);
+}
+function OFFlog(pseudo){
+  var parent = document.getElementById('chatZone');
+  var p = document.createElement('p');
+  p.innerHTML = "<i>"+pseudo+" has quit </i>";
   parent.append(p);
 }
