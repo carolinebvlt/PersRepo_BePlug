@@ -19,6 +19,7 @@ app.use(expressSession({ secret: 'secret', store: sessionStore, resave:true, sav
 
 app.use(express.static(__dirname + '/assets'));
 app.use(express.static(__dirname + '/db'));
+app.use(express.static(__dirname + '/favicons'));
 
 app.get('/', function(rq, rs){
   rq.session.pseudo = rq.session.pseudo || 'JohnDoe';
