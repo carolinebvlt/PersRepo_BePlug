@@ -1,0 +1,60 @@
+html, body{
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+  font-family: sans-serif;
+}
+.mainContent{
+  width: 85%;
+  height: 100vh;
+  float: left;
+}
+h1{
+  font-size: 2.5em;
+  padding-top: 30px;
+  color: silver;
+  text-shadow: black 2px 2px;
+  text-align: center;
+}
+#chatZone{
+  background-color: white;
+  width: 80%;
+  min-height: 60vh;
+  margin: auto;
+  border-radius: 10px;
+  border: outset;
+}
+#formChat{
+  text-align: center;
+  margin-top: 40px;
+}
+#formChat input{
+  height: 30px;
+  border-radius: 5px;
+  border: outset ;
+}
+#submitMsg{
+  width: 70px;
+  height: 35px;
+}
+#submitMsg:hover{
+  border: inset;
+  cursor: pointer;
+}
+/*--------------------------------*/
+.usersON{
+  display: block;
+  width: 15%;
+  height: 100vh;
+  float: right;
+  background-color: white;
+  box-shadow: silver 5px 5px 10px inset;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  overflow-y: scroll;
+}
+.usersON h2{
+  text-align: center;
+  color: silver;
+  text-shadow: 1px 1px black;
+}
