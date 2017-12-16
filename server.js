@@ -16,8 +16,6 @@ io.sockets.on('connection', function(socket, pseudo){
 
   socket.on('newUser', function(pseudo){
     socket.pseudo = pseudo;
-    socket.broadcast.emit('userON', pseudo);
-
     var content = fs.readFileSync('db/usersON.json');
     var data = JSON.parse(content);
     var newI = data.length;
@@ -27,12 +25,13 @@ io.sockets.on('connection', function(socket, pseudo){
     function finished(err){
       console.log('done!');
     };
+    socket.broadcast.emit('userON', pseudo);
   });
-
 
   socket.on('msg', function(msg){
     socket.broadcast.emit('msg', {exp:socket.pseudo, content:msg});
-  })
+  });
+
 });
 
 server.listen(8080);
