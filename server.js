@@ -28,6 +28,10 @@ io.sockets.on('connection', function(socket, pseudo){
     socket.broadcast.emit('userON', pseudo);
   });
 
+  // socket.on('disconnect', function(pseudo){
+  //   console.log(pseudo);
+  // })
+
   socket.on('msg', function(msg){
     socket.broadcast.emit('msg', {exp:socket.pseudo, content:msg});
   });
