@@ -33,16 +33,20 @@ sessionSockets.on('connection', function (err, socket, session) {
     session.pseudo = pseudo;
     session.save();
     socket.emit('session', session);
-    /*--------------A DESACTIVER QUAND ON UTILISE NODEMON-------------*/
     var content = fs.readFileSync('db/usersON.json');
     var data = JSON.parse(content);
-    var newI = data.length;
-    data[newI] = pseudo;
-    data = JSON.stringify(data, null, 2);
-    fs.writeFile('db/usersON.json', data , finished);
-    function finished(err){
-      console.log('added to usersON');
-    };
+    var sorted = data.sort();
+    socket.emit('listUsersON', sorted);
+    /*--------------A DESACTIVER QUAND ON UTILISE NODEMON-------------*/
+    // var content = fs.readFileSync('db/usersON.json');
+    // var data = JSON.parse(content);
+    // var newI = data.length;
+    // data[newI] = pseudo;
+    // data = JSON.stringify(data, null, 2);
+    // fs.writeFile('db/usersON.json', data , finished);
+    // function finished(err){
+    //   console.log('added to usersON');
+    // };
     /*----------------------------------------------------------------*/
     socket.broadcast.emit('userON', pseudo);
   });
@@ -53,14 +57,14 @@ sessionSockets.on('connection', function (err, socket, session) {
 
   socket.on('disconnect', function() {
     /*--------------A DESACTIVER QUAND ON UTILISE NODEMON-------------*/
-    var content = fs.readFileSync('db/usersON.json');
-    var data = JSON.parse(content);
-    data.splice(data.indexOf(session.pseudo), 1);
-    data = JSON.stringify(data, null, 2);
-    fs.writeFile('db/usersON.json', data , finished);
-    function finished(err){
-      console.log('deleted from usersON');
-    };
+    // var content = fs.readFileSync('db/usersON.json');
+    // var data = JSON.parse(content);
+    // data.splice(data.indexOf(session.pseudo), 1);
+    // data = JSON.stringify(data, null, 2);
+    // fs.writeFile('db/usersON.json', data , finished);
+    // function finished(err){
+    //   console.log('deleted from usersON');
+    // };
     /*----------------------------------------------------------------*/
     socket.broadcast.emit('userOFF', session.pseudo);
   });

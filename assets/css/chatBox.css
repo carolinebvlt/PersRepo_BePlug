@@ -58,3 +58,11 @@ h1{
   color: silver;
   text-shadow: 1px 1px black;
 }
+.usersON ul{
+  list-style: none;
+  line-height: 25px;
+}
+.usersON li:hover{
+  cursor: pointer;
+  font-weight: bold;
+}

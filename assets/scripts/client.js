@@ -21,7 +21,9 @@ socket.on('userON', function(pseudo){
 socket.on('userOFF', function(pseudo){
   OFFlog(pseudo);
 });
-
+socket.on('listUsersON', function(list){
+  insertListUsersON(list);
+});
 // socket.on('session', function(session){
 //   console.log('logSessionPseudo = '+ session.pseudo);
 // }) OK
@@ -51,4 +53,12 @@ function OFFlog(pseudo){
   var p = document.createElement('p');
   p.innerHTML = "<i>"+pseudo+" has quit </i>";
   parent.append(p);
+}
+function insertListUsersON(list){
+  list.forEach(function(user){
+    var parent = document.getElementById('usersON');
+    var li = document.createElement('li');
+    li.innerHTML = user;
+    parent.append(li);
+  });
 }
