@@ -14,7 +14,7 @@ html,body{
   height: 20vh;
   display: flex;
   justify-content: space-around;
-  box-shadow: grey 4px 8px 15px;
+  box-shadow: silver 4px 8px 15px;
 }
 .logo{
   display: inline-block;
@@ -101,6 +101,7 @@ xmp{
 /*--------------HOME-----------------*/
 #home{
   height: 70vh;
+  background-color: white
 }
 #divBox{
   display: flex;
@@ -111,8 +112,11 @@ xmp{
 }
 #divBox div{
   background-color: white;
-  width: 25%;
+  width: 28%;
   height: 40%;
-  border-radius: 5px;
-  border: solid silver 1px;*/
+  border-radius: 10px;
+  box-shadow: grey 4px 8px 15px;
+}
+#divBox div:hover{
+  box-shadow: grey 2px 4px 15px;
 }
