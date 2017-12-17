@@ -99,3 +99,20 @@ xmp{
   margin: auto;
 }
 /*--------------HOME-----------------*/
+#home{
+  height: 70vh;
+}
+#divBox{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: 65vh;
+  padding-top: 5vh;
+}
+#divBox div{
+  background-color: white;
+  width: 25%;
+  height: 40%;
+  border-radius: 5px;
+  border: solid silver 1px;*/
+}
