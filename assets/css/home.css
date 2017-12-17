@@ -7,14 +7,13 @@ html,body{
   width: 100%;
   height: 100vh;
 }
+/*---------------HEADER----------------*/
 .mainHeader{
   /*background-color: red;*/
   width: 100%;
-  height: 15vh;
+  height: 20vh;
   display: flex;
   justify-content: space-around;
-  padding-top: 20px;
-  padding-bottom: 20px;
   box-shadow: grey 4px 8px 15px;
 }
 .logo{
@@ -22,18 +21,18 @@ html,body{
   /*background-color: pink;*/
   float: left;
   width: 10%;
-  margin-top: 9px;
+  margin-top: 30px;
 }
 .navBox{
   display: inline-block;
   width: 60%;
+  margin-top: 50px;
   /*background-color: orange;*/
 }
 .mainHeader nav{
   /*background-color: lightblue;*/
   display: flex;
   justify-content: space-around;
-  margin-top: 30px;
 }
 h1{
   /*background-color: blue;*/
@@ -45,12 +44,11 @@ h1{
   padding: 0;
   text-shadow: grey 5px 10px 15px;
   color: black;
-  margin-top: -40px;
+  margin-top: 50px;
 }
-.mainContent{
-  /*background-color: green;*/
+xmp{
+  margin: 0;
 }
-/*-------------------------------*/
 .mainHeader i{
   border: solid silver 2px;
   border-radius: 50%;
@@ -75,3 +73,29 @@ h1{
   box-shadow: grey 2px 4px 15px;
   cursor: pointer;
 }
+
+/*--------------CONTENT-----------------*/
+#notifications,
+#calendar,
+#forums,
+#links,
+#chatbox,
+#privateMsgs,
+#usersON{
+  display: none;
+}
+.mainContent{
+  /*background-color: green;*/
+  width: 100%;
+  height: 74vh;
+  margin-top: 6vh;
+}
+.contentBox{
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  width: 95%;
+  height: 70vh;
+  display: block;
+  margin: auto;
+}
+/*--------------HOME-----------------*/
