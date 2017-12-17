@@ -23,7 +23,7 @@ app.use(express.static(__dirname + '/favicons'));
 
 app.get('/', function(rq, rs){
   rq.session.pseudo = rq.session.pseudo || 'JohnDoe';
-  rs.render('messenger.ejs');
+  rs.render('home.ejs');
 });
 
 sessionSockets.on('connection', function (err, socket, session) {
