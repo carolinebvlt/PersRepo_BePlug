@@ -32,12 +32,17 @@ sessionSockets.on('connection', function (err, socket, session) {
 
   socket.on('newUser', function(pseudo){
     session.pseudo = pseudo;
+    session.socketId = socket.id;
     session.save();
     socket.emit('session', session);
     var content = fs.readFileSync('db/usersON.json');
     var data = JSON.parse(content);
-    var sorted = data.sort();
-    socket.emit('listUsersON', sorted);
+    var pseudoListUnsorted = [];
+    data.forEach(function(user){
+      pseudoListUnsorted.push(user.pseudo);
+    });
+    var pseudoList = pseudoListUnsorted.sort();
+    socket.emit('listUsersON', pseudoList);
     /*--------------A DESACTIVER QUAND ON UTILISE NODEMON-------------*/
     // var content = fs.readFileSync('db/usersON.json');
     // var data = JSON.parse(content);

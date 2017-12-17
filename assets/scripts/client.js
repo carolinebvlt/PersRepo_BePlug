@@ -3,6 +3,11 @@ var pseudo = prompt('What\'s your name ?');
 
 socket.emit('newUser', pseudo);
 
+// socket.on('session', function(session){
+//   console.log(session.pseudo);
+//   console.log(session.socketId);
+// });
+
 document.getElementById('submitMsg').addEventListener('click', function(event){
   event.preventDefault();
   msg = document.getElementById('message').value;
@@ -34,6 +39,11 @@ socket.on('msgTest', function(msg){
   console.log('RoomMessage : '+msg);
 });
 
+/*-------------ONCLICK---------------*/
+
+function talkTo(pseudo){
+  
+}
 
 /*--------------------------  FUNCTIONS  ---------------------------------*/
 
@@ -62,10 +72,11 @@ function OFFlog(pseudo){
   parent.append(p);
 }
 function insertListUsersON(list){
-  list.forEach(function(user){
+  list.forEach(function(pseudo){
     var parent = document.getElementById('usersON');
     var li = document.createElement('li');
-    li.innerHTML = user;
+    li.innerHTML = pseudo;
+    li.onclick = 'talkTo('+ pseudo+')';
     parent.append(li);
   });
 }
