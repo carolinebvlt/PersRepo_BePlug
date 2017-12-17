@@ -43,8 +43,8 @@ h1{
   font-size: 70px;
   margin: 0;
   padding: 0;
-  text-shadow: grey 4px 8px 15px;
-  color: grey;
+  text-shadow: grey 5px 10px 15px;
+  color: black;
   margin-top: -40px;
 }
 .mainContent{
@@ -61,10 +61,17 @@ h1{
 }
 .mainHeader i:hover{
   box-shadow: grey 2px 4px 15px;
+  cursor: pointer;
   color: black;
 }
 .mainHeader img{
   width: 12vh;
   margin: auto;
   display: block;
+  border-radius: 50%;
+  box-shadow: grey 4px 8px 15px;
+}
+.mainHeader img:hover{
+  box-shadow: grey 2px 4px 15px;
+  cursor: pointer;
 }
