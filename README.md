@@ -13,5 +13,5 @@ _____
 _____
 ## Problèmes rencontrés / découvertes
 * prob de co après manip json => parce que nodemon redémarre
-* readFile (bloquant) / readFileSync (non bloquant)
+* readFile (non bloquant) / readFileSync (bloquant)
 * récupérer le pseudo pour la déconnexion => need sessions
