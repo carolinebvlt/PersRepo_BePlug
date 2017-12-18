@@ -1,25 +1,16 @@
 var socket = io.connect('http://localhost:8080');
 var pseudo = prompt('What\'s your name ?');
+var session;
+var room = "testRoom";
 
 socket.emit('newUser', pseudo);
 
-// socket.on('session', function(session){
-//   console.log(session.pseudo);
-//   console.log(session.socketId);
-// });
-
-document.getElementById('submitMsg').addEventListener('click', function(event){
-  event.preventDefault();
-  msg = document.getElementById('message').value;
-  socket.emit('msg', msg);
-  insertOwnMsg('chatZone',pseudo, msg);
-  document.getElementById('message').value = '';
+socket.on('session', function(data){
+  session = data;
 });
-
 socket.on('msg', function(msg){
   insertMsg('chatZone', msg);
 });
-
 socket.on('userON', function(pseudo){
   ONlog(pseudo);
 });
@@ -31,7 +22,6 @@ socket.on('listUsersON', function(list){
 });
 
 
-var room = "testRoom";
 socket.on('connect', function(){
   socket.emit('room', room);
 });
@@ -41,8 +31,23 @@ socket.on('msgTest', function(msg){
 
 /*-------------ONCLICK---------------*/
 
+function getSection(section){
+  var currentPage = session.currentPage;
+  document.getElementById(currentPage).style.display = "none";
+  section.style.display = "block";
+  socket.emit('updateCurrentPage', section.id);
+}
+
+document.getElementById('submitMsg').addEventListener('click', function(event){
+  event.preventDefault();
+  msg = document.getElementById('message').value;
+  socket.emit('msg', msg);
+  insertOwnMsg('chatZone',pseudo, msg);
+  document.getElementById('message').value = '';
+});
+
 function talkTo(pseudo){
-  
+
 }
 
 /*--------------------------  FUNCTIONS  ---------------------------------*/

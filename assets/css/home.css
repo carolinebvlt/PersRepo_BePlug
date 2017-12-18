@@ -117,6 +117,3 @@ xmp{
   border-radius: 10px;
   box-shadow: grey 4px 8px 15px;
 }
-#divBox div:hover{
-  box-shadow: grey 2px 4px 15px;
-}

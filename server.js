@@ -6,7 +6,6 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
 var io = require('socket.io').listen(server);
-
 var myCookieParser = cookieParser('secret');
 var sessionStore = new expressSession.MemoryStore();
 var SessionSockets = require('session.socket.io');
@@ -19,7 +18,6 @@ app.use(expressSession({ secret: 'secret', store: sessionStore, resave:true, sav
 
 app.use(express.static(__dirname + '/assets'));
 app.use(express.static(__dirname + '/db'));
-app.use(express.static(__dirname + '/favicons'));
 
 app.get('/', function(rq, rs){
   rq.session.pseudo = rq.session.pseudo || 'JohnDoe';
@@ -28,11 +26,10 @@ app.get('/', function(rq, rs){
 
 sessionSockets.on('connection', function (err, socket, session) {
 
-  socket.emit('session', session);
-
   socket.on('newUser', function(pseudo){
     session.pseudo = pseudo;
     session.socketId = socket.id;
+    session.currentPage = "home";
     session.save();
     socket.emit('session', session);
     var content = fs.readFileSync('db/usersON.json');
@@ -43,42 +40,44 @@ sessionSockets.on('connection', function (err, socket, session) {
     });
     var pseudoList = pseudoListUnsorted.sort();
     socket.emit('listUsersON', pseudoList);
-    /*--------------A DESACTIVER QUAND ON UTILISE NODEMON-------------*/
-    // var content = fs.readFileSync('db/usersON.json');
-    // var data = JSON.parse(content);
-    // var newI = data.length;
-    // data[newI] = pseudo;
-    // data = JSON.stringify(data, null, 2);
-    // fs.writeFile('db/usersON.json', data , finished);
-    // function finished(err){
-    //   console.log('added to usersON');
-    // };
+    /*--------------A DESACTIVER QUAND ON TEST AVEC NODEMON-------------*/
+    var content = fs.readFileSync('db/usersON.json');
+    var data = JSON.parse(content);
+    var newI = data.length;
+    data[newI] = pseudo;
+    data = JSON.stringify(data, null, 2);
+    fs.writeFile('db/usersON.json', data , finished);
+    function finished(err){
+      console.log('added to usersON');
+    };
     /*----------------------------------------------------------------*/
     socket.broadcast.emit('userON', pseudo);
   });
-
   socket.on('disconnect', function() {
-    /*--------------A DESACTIVER QUAND ON UTILISE NODEMON-------------*/
-    // var content = fs.readFileSync('db/usersON.json');
-    // var data = JSON.parse(content);
-    // data.splice(data.indexOf(session.pseudo), 1);
-    // data = JSON.stringify(data, null, 2);
-    // fs.writeFile('db/usersON.json', data , finished);
-    // function finished(err){
-    //   console.log('deleted from usersON');
-    // };
+    /*--------------A DESACTIVER QUAND ON TEST AVEC NODEMON-------------*/
+    var content = fs.readFileSync('db/usersON.json');
+    var data = JSON.parse(content);
+    data.splice(data.indexOf(session.pseudo), 1);
+    data = JSON.stringify(data, null, 2);
+    fs.writeFile('db/usersON.json', data , finished);
+    function finished(err){
+      console.log('deleted from usersON');
+    };
     /*----------------------------------------------------------------*/
     socket.broadcast.emit('userOFF', session.pseudo);
   });
-
+  socket.on('updateCurrentPage', function(currentPage){
+    session.currentPage = currentPage;
+    session.save();
+    socket.emit('session', session);
+  });
   socket.on('msg', function(msg){
     socket.broadcast.emit('msg', {exp:session.pseudo, content:msg});
   });
-
   socket.on('room', function(room){
     socket.join(room);
     socket.broadcast.to(room).emit('msgTest', 'this is a test message');
-    /*one ne voit pa sle message lié a sa propre connection mais celle des autres oui*/
+    //on ne voit pas le message lié a sa propre connection mais celle des autres oui
   });
 });
 
