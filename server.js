@@ -40,21 +40,18 @@ sessionSockets.on('connection', function (err, socket, session) {
     });
     var pseudoList = pseudoListUnsorted.sort();
     socket.emit('listUsersON', pseudoList);
-    /*--------------A DESACTIVER QUAND ON TEST AVEC NODEMON-------------*/
     var content = fs.readFileSync('db/usersON.json');
     var data = JSON.parse(content);
     var newI = data.length;
-    data[newI] = pseudo;
+    data[newI] = {pseudo:pseudo, socketId:session.socketId};
     data = JSON.stringify(data, null, 2);
     fs.writeFile('db/usersON.json', data , finished);
     function finished(err){
       console.log('added to usersON');
     };
-    /*----------------------------------------------------------------*/
     socket.broadcast.emit('userON', pseudo);
   });
   socket.on('disconnect', function() {
-    /*--------------A DESACTIVER QUAND ON TEST AVEC NODEMON-------------*/
     var content = fs.readFileSync('db/usersON.json');
     var data = JSON.parse(content);
     data.splice(data.indexOf(session.pseudo), 1);
@@ -63,7 +60,6 @@ sessionSockets.on('connection', function (err, socket, session) {
     function finished(err){
       console.log('deleted from usersON');
     };
-    /*----------------------------------------------------------------*/
     socket.broadcast.emit('userOFF', session.pseudo);
   });
   socket.on('updateCurrentPage', function(currentPage){
@@ -76,7 +72,7 @@ sessionSockets.on('connection', function (err, socket, session) {
   });
   socket.on('room', function(room){
     socket.join(room);
-    socket.broadcast.to(room).emit('msgTest', 'this is a test message');
+    socket.broadcast.to(room).emit('msgTest', 'someone joint de room');
     //on ne voit pas le message lié a sa propre connection mais celle des autres oui
   });
 });

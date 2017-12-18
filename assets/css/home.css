@@ -80,9 +80,11 @@ xmp{
 #forums,
 #links,
 #chatbox,
-#privateMsgs,
-#usersON{
+#privateMsgs{
   display: none;
+}
+#usersON{
+  height: 0;
 }
 .mainContent{
   /*background-color: green;*/

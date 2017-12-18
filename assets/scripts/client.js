@@ -4,6 +4,9 @@ var session;
 var room = "testRoom";
 socket.emit('newUser', pseudo);
 
+socket.on('connect', function(){
+  socket.emit('room', room);
+});
 socket.on('session', function(data){
   session = data;
 });
@@ -19,9 +22,6 @@ socket.on('userOFF', function(pseudo){
 socket.on('listUsersON', function(list){
   insertListUsersON(list);
 });
-socket.on('connect', function(){
-  socket.emit('room', room);
-});
 socket.on('msgTest', function(msg){
   console.log('RoomMessage : '+msg);
 });
@@ -29,18 +29,28 @@ socket.on('msgTest', function(msg){
 /*-------------ONCLICK---------------*/
 
 function getSection(section){
-  var currentPage = session.currentPage;
-  document.getElementById(currentPage).style.display = "none";
-  section.style.display = "block";
-  var rq = new XMLHttpRequest();
-  rq.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-     section.innerHTML = this.responseText;
-    }
-  };
-  rq.open("GET", "/sections/"+section.id + ".ejs", true);
-  rq.send();
-  socket.emit('updateCurrentPage', section.id);
+  document.getElementById(session.currentPage).style.display = "none";
+  if (section == "home"){
+    document.getElementById("home").style.display = "block";
+    socket.emit('updateCurrentPage', "home");
+  }
+  else if (section == "usersON") {
+    document.getElementById('usersON').style.height = "60vh";
+    document.getElementById('usersON').style.overflow = "hidden";// dont work
+    socket.emit('updateCurrentPage', "usersON");
+  }
+  else{
+    document.getElementById(section).style.display = "block";
+    var rq = new XMLHttpRequest();
+    rq.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+       document.getElementById(section).innerHTML = this.responseText;
+      }
+    };
+    rq.open("GET", "/sections/"+section + ".ejs", true);
+    rq.send();
+    socket.emit('updateCurrentPage', section);
+  }
 }
 function sendMsg(event){
   event.preventDefault();
@@ -61,24 +71,28 @@ function insertMsg(targetId, msg){
   var parent = document.getElementById(targetId);
   var p = document.createElement('p');
   p.innerHTML = "<strong>"+msg.exp+" : </strong>" + msg.content;
+  p.style.margin = "10px";
   parent.append(p);
 }
 function insertOwnMsg(targetId, pseudo, msg){
   var parent = document.getElementById(targetId);
   var p = document.createElement('p');
   p.innerHTML = "<strong><i>Me</i> : </strong>" + msg;
+  p.style.margin = "10px";
   parent.append(p);
 }
 function ONlog(pseudo){
   var parent = document.getElementById('chatZone');
   var p = document.createElement('p');
   p.innerHTML = "<i>"+pseudo+" is online </i>";
+  p.style.margin = "10px";
   parent.append(p);
 }
 function OFFlog(pseudo){
   var parent = document.getElementById('chatZone');
   var p = document.createElement('p');
   p.innerHTML = "<i>"+pseudo+" has quit </i>";
+  p.style.margin = "10px";
   parent.append(p);
 }
 function insertListUsersON(list){

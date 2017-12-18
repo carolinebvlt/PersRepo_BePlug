@@ -10,18 +10,18 @@
     <div class="main">
       <header class="mainHeader">
         <div class="logo">
-          <img title="Home" src="/img/myLogo.png" alt="Logo"/>
+          <img title="Home" onclick="getSection('home')" src="/img/myLogo.png" alt="Logo"/>
         </div>
         <h1><xmp>Be</plug></xmp></h1>
         <div class="navBox">
           <nav>
-            <i title="Notifications" class="fa fa-bell fa-3x" aria-hidden="true"></i>
-            <i title="Calendar" class="fa fa-calendar fa-3x" aria-hidden="true"></i>
-            <i title="Forums" class="fa fa-list-alt fa-3x" aria-hidden="true"></i>
-            <i title="Links" class="fa fa-link fa-3x" aria-hidden="true"></i>
-            <i title="Chatbox" onclick="getSection(chatbox)" class="fa fa-comments fa-3x" aria-hidden="true"></i>
-            <i title="Private discussions" class="fa fa-comment fa-3x" aria-hidden="true"></i>
-            <i title="Online users" class="fa fa-users fa-3x" aria-hidden="true"></i>
+            <i title="Notifications" onclick="getSection('notifications')" class="fa fa-bell fa-3x" aria-hidden="true"></i>
+            <i title="Calendar" onclick="getSection('calendar')" class="fa fa-calendar fa-3x" aria-hidden="true"></i>
+            <i title="Forums" onclick="getSection('forums')" class="fa fa-list-alt fa-3x" aria-hidden="true"></i>
+            <i title="Links" onclick="getSection('links')" class="fa fa-link fa-3x" aria-hidden="true"></i>
+            <i title="Chatbox" onclick="getSection('chatbox')" class="fa fa-comments fa-3x" aria-hidden="true"></i>
+            <i title="Private discussions" onclick="getSection('privateMsgs')" class="fa fa-comment fa-3x" aria-hidden="true"></i>
+            <i title="Online users" onclick="getSection('usersON')" class="fa fa-users fa-3x" aria-hidden="true"></i>
           </nav>
         </div>
       </header>
