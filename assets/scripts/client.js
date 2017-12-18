@@ -2,7 +2,6 @@ var socket = io.connect('http://localhost:8080');
 var pseudo = prompt('What\'s your name ?');
 var session;
 var room = "testRoom";
-
 socket.emit('newUser', pseudo);
 
 socket.on('session', function(data){
@@ -20,8 +19,6 @@ socket.on('userOFF', function(pseudo){
 socket.on('listUsersON', function(list){
   insertListUsersON(list);
 });
-
-
 socket.on('connect', function(){
   socket.emit('room', room);
 });
@@ -35,16 +32,24 @@ function getSection(section){
   var currentPage = session.currentPage;
   document.getElementById(currentPage).style.display = "none";
   section.style.display = "block";
+  var rq = new XMLHttpRequest();
+  rq.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     section.innerHTML = this.responseText;
+    }
+  };
+  rq.open("GET", "/sections/"+section.id + ".ejs", true);
+  rq.send();
   socket.emit('updateCurrentPage', section.id);
 }
-
-document.getElementById('submitMsg').addEventListener('click', function(event){
+function sendMsg(event){
   event.preventDefault();
-  msg = document.getElementById('message').value;
-  socket.emit('msg', msg);
+  var msg = document.getElementById('message').value;
   insertOwnMsg('chatZone',pseudo, msg);
-  document.getElementById('message').value = '';
-});
+  console.log(msg);
+  socket.emit('msg', msg);
+  document.getElementById('message').value = "";
+}
 
 function talkTo(pseudo){
 

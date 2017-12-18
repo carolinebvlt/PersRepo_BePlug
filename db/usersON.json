@@ -1,10 +1,12 @@
 [
   {
-    "pseudo":"PNJ2",
-    "socketId":"4D"
+    "pseudo": "PNJ2",
+    "socketId": "4D"
   },
   {
-    "pseudo":"PNJ1",
-    "socketId":"3D"
-  }
+    "pseudo": "PNJ1",
+    "socketId": "3D"
+  },
+  "caro",
+  "lolipop"
 ]
