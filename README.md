@@ -6,6 +6,7 @@ This application aims to optimize communication and information sharing at BeCod
 _____
 
 ## Features (sections)
+  * [Registration](#registration)
   * [Home](#home)
   * [Notifications](#notifications)
   * [Calendar](#calendar)
@@ -13,9 +14,16 @@ _____
   * [Forums](#forums)
   * [Chatbox](#chatbox)
   * [PrivateMsgs](#privateMsgs)
-  * [UsersON](#usersON)
+  * [Users](#users)
 
 _____
+
+### Registration
+* user = {lastName:" ", firstName:" ", pseudo:" ", startup:" "}
+* ```addUser()```
+* ```updateUser()```
+* ```deleteUser()```
+
 
 ### Home
 Summaries of the last updates :
@@ -29,6 +37,7 @@ Short and important messages/notices sent to everybody
 * logs + AJAX for "more..."
 * notification = {exp:" ", title:" ", msg:" ", date:" "}
 * ```sendNotif()```
+
 ### Calendar
 * event = {date:" ", hour:" ", title:" ", description:" ", exp:" "}
 * display :
@@ -36,6 +45,9 @@ Short and important messages/notices sent to everybody
   - week
   - month
 * ```addEvent()```
+* ```updateEvent()```
+* ```deleteEvent()```
+
 
 ### Links
 Useful links :
@@ -46,6 +58,8 @@ Useful links :
   - tools
 * ```addCategory()```
 * ```addLink()```
+* ```updateLink()```
+* ```deleteLink()```
 
 ### Forums
 Discussions, mutual help, ...
@@ -53,11 +67,20 @@ Discussions, mutual help, ...
 * ```addCategory()```
 * ```addTopic()```
 * ```addMsg()```
+* ```updateMsg()```
+* ```deleteMsg()```
 
 ### Chatbox
-### PrivateMsgs
-### UsersON
+* notification = {exp:" ", msg:" ", date:" "}
+* ```sendMsg()```
 
+### PrivateMsgs
+* notification = {exp:" ", rec:" ", msg:" ", date:" "}
+* ```sendMsg()```
+
+### Users
+* users ON
+* all the users (by startup?)
 _____
 
 ## DataBase
