@@ -16,7 +16,7 @@ _____
 
 | Server   | Client    |
 | ---      | ---       |
-| Backtick | `         |
+| on('newUser') | `         |
 | Pipe     | \|        |
 _____
 
