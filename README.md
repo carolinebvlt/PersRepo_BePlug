@@ -4,13 +4,13 @@ _____
 
 ## Fonctionnalités (sections)
   * [home](#home)
-  * notifications
-  * calendar
-  * links
-  * forums
-  * chatbox
-  * privateMsgs
-  * usersON
+  * [notifications](#notifications)
+  * [calendar](#calendar)
+  * [links](#links)
+  * [forums](#forums)
+  * [chatbox](#chatbox)
+  * [privateMsgs](#privateMsgs)
+  * [usersON](#usersON)
 
 _____
 
