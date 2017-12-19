@@ -4,8 +4,9 @@ This application aims to optimize communication and information sharing at BeCod
 
 *Created with NodeJS*
 _____
+##
 
-## Features (sections)
+### Features (sections)
   * [Registration](#registration)
   * [Home](#home)
   * [Notifications](#notifications)
@@ -16,29 +17,31 @@ _____
   * [PrivateMsgs](#privateMsgs)
   * [Users](#users)
 
+### [DataBase](#database)
+
+### [Sessions](#sessions)
 _____
 
-### Registration
-* user = {lastName:" ", firstName:" ", pseudo:" ", startup:" "}
+#### Registration
+* user = {lastName:" ", firstName:" ", email:" ", pseudo:" ", startup:" "}
 * ```addUser()```
 * ```updateUser()```
 * ```deleteUser()```
 
-
-### Home
+#### Home
 Summaries of the last updates :
 * notifications
 * calendar
 * links
 * forums
 
-### Notifications
+#### Notifications
 Short and important messages/notices sent to everybody
 * logs + AJAX for "more..."
 * notification = {exp:" ", title:" ", msg:" ", date:" "}
 * ```sendNotif()```
 
-### Calendar
+#### Calendar
 * event = {date:" ", hour:" ", title:" ", description:" ", exp:" "}
 * display :
   - day
@@ -49,7 +52,7 @@ Short and important messages/notices sent to everybody
 * ```deleteEvent()```
 
 
-### Links
+#### Links
 Useful links :
 * link = {exp: " ", date:" ", category:" ", description:" ", link:" "}
 * categories :
@@ -61,7 +64,7 @@ Useful links :
 * ```updateLink()```
 * ```deleteLink()```
 
-### Forums
+#### Forums
 Discussions, mutual help, ...
 * message = {exp:" ", date:" ", category:" ", topic:" ", msg:" "}
 * ```addCategory()```
@@ -70,18 +73,29 @@ Discussions, mutual help, ...
 * ```updateMsg()```
 * ```deleteMsg()```
 
-### Chatbox
+#### Chatbox
 * notification = {exp:" ", msg:" ", date:" "}
 * ```sendMsg()```
 
-### PrivateMsgs
+#### PrivateMsgs
 * notification = {exp:" ", rec:" ", msg:" ", date:" "}
 * ```sendMsg()```
 
-### Users
+#### Users
 * users ON
 * all the users (by startup?)
 _____
 
-## DataBase
-* for every section except "home"
+### DataBase
+* users.json
+* usersON.json
+* notifications.json
+* calendar.json
+* links.json
+* forums.json
+* chatbox.json
+* private messages are saved with sessions only => need a warning
+
+_____
+
+### Sessions
