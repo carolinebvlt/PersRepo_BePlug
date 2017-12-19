@@ -3,7 +3,7 @@
 _____
 
 ## Fonctionnalités (sections)
-  * home
+  * [home](#Home)
   * notifications
   * calendar
   * links
