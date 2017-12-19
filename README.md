@@ -23,7 +23,7 @@ _____
 
 ### Notifications
 * logs + AJAX for "more..."
-* {exp:"", title:"", msg:"", date:""}
+* {exp:" ", title:" ", msg:" ", date:" "}
 ### Calendar
 ### Links
 ### Forums
@@ -36,3 +36,4 @@ _____
 * prob de co après manip json => parce que nodemon redémarre
 * readFile (non bloquant) / readFileSync (bloquant)
 * récupérer le pseudo pour la déconnexion => need sessions
+* section qui se vide quand display block => confusion backend: rq AJAX à chaque fois 
