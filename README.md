@@ -60,10 +60,3 @@ _____
 
 ## DataBase
 * for every section except "home"
-_____
-
-## Problèmes rencontrés / découvertes
-* prob de co après manip json => parce que nodemon redémarre
-* readFile (non bloquant) / readFileSync (bloquant)
-* récupérer le pseudo pour la déconnexion => need sessions
-* section qui se vide quand display block => confusion backend: rq AJAX à chaque fois
