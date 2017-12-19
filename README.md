@@ -76,11 +76,11 @@ _____
   * ```deleteMsg()```
 
 * #### Chatbox
-  * notification = {exp:" ", msg:" ", date:" "}
+  * message = {exp:" ", msg:" ", date:" "}
   * ```sendMsg()```
 
 * #### PrivateMsgs
-  * notification = {exp:" ", rec:" ", msg:" ", date:" "}
+  * message = {exp:" ", rec:" ", msg:" ", date:" "}
   * ```sendMsg()```
 
 * #### Users
@@ -96,7 +96,7 @@ _____
 * links.json
 * forums.json
 * chatbox.json
-* private messages are saved with sessions only => need a warning
+* privateMsgs.json 
 
 _____
 
