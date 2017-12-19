@@ -2,7 +2,7 @@
 # ```Be</plug>```
 _____
 
-## Fonctionnalités (sections)
+## Features (sections)
   * [Home](#home)
   * [Notifications](#notifications)
   * [Calendar](#calendar)
