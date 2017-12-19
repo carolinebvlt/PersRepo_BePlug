@@ -4,7 +4,7 @@ This application aims to optimize communication and information sharing at BeCod
 
 *Created with NodeJS*
 _____
-##
+## Contents :
 
 ### Features (sections)
   * [Registration](#registration)
