@@ -3,7 +3,7 @@
 _____
 
 ## Fonctionnalités (sections)
-  * home = summaries (notification, calendar, links, forums)
+  * home
   * notifications
   * calendar
   * links
@@ -14,10 +14,22 @@ _____
 
 _____
 
-| Server   | Client    |
-| ---      | ---       |
-| on('newUser') | `         |
-| Pipe     | \|        |
+### Home
+* Summaries (last updates):
+  - notifications
+  - calendar
+  - links
+  - forums
+
+### Notifications
+* logs + AJAX for "more..."
+* {exp:"", title:"", msg:"", date:""}
+### Calendar
+### Links
+### Forums
+### Chatbox
+### PrivateMsgs
+### UsersON
 _____
 
 ## Problèmes rencontrés / découvertes
