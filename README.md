@@ -6,7 +6,7 @@ This application aims to optimize communication and information sharing at BeCod
 _____
 ## Contents :
 
-### Features (sections)
+### [Features](#features)
   * [Registration](#registration)
   * [Home](#home)
   * [Notifications](#notifications)
@@ -21,6 +21,8 @@ _____
 
 ### [Sessions](#sessions)
 _____
+
+### Features
 
 #### Registration
 * user = {lastName:" ", firstName:" ", email:" ", pseudo:" ", startup:" "}
