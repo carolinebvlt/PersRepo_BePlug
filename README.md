@@ -2,7 +2,7 @@
 # ```Be</plug>```
 This application aims to optimize communication and information sharing at BeCode.
 
-## Created with NodeJS
+*Created with NodeJS*
 _____
 
 ## Features (sections)
