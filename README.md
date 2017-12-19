@@ -1,5 +1,6 @@
 ![Logo BePlug](assets/img/myLogo.png)
 # ```Be</plug>```
+This application aims to optimize communication and information sharing at BeCode.
 _____
 
 ## Features (sections)
