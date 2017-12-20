@@ -25,7 +25,7 @@ _____
 ### Features
 
 * #### Registration
-  * user = {lastName:" ", firstName:" ", email:" ", pseudo:" ", startup:" "}
+  * user = {firstName:" ", lastName: " ", pseudo:" ", pass:" ", email:" ", startup:" "}
   * ```addUser()```
   * ```updateUser()```
   * ```deleteUser()```
@@ -96,7 +96,7 @@ _____
 * links.json
 * forums.json
 * chatbox.json
-* privateMsgs.json 
+* privateMsgs.json
 
 _____
 
